@@ -4,7 +4,7 @@ setwd("~/")
 setwd("~/Users/jaydenfrancis/Downloads")
 # reading collegedata from a csv file
 collegedata <- read.csv("~/Downloads/college_variables.csv")
-
+# Part 1:
 # omit all entries where SAT_AVG == "NULL"
 
 nonullsat <- collegedata[!(collegedata$SAT_AVG=="NULL"),]
@@ -73,6 +73,7 @@ meanSATr9 <- mean(region9$SAT_AVG)
 medianSATr9 <- median(region9$SAT_AVG)
 sdSATr9 <- sd(region9$SAT_AVG)
 
+# Part 2:
 # Now lets move on to admission rates
 # first lets get rid of "NULL" and convert this character variable to numeric
 nonulladmit <- collegedata[!(collegedata$ADM_RATE=="NULL"),]
@@ -85,19 +86,21 @@ sortedadmitdata <- admitdata[order(admitdata$ADM_RATE, decreasing = TRUE), ]
 # lets find a list of the least selective (all of which have an admit rate of 100% according to this data)
 leastselective <- sortedadmitdata[1:10,]$INSTNM
 
-# we know that this data set has 2006 so lets grab the last 10 to find 
+# we know that this data set has 2006 entries so lets grab the last 10 to find 
 # the most selective schools
 mostselective <- sortedadmitdata[1997:2006,]$INSTNM
 
 # we see Harvard at the top, followed by the Curtis Institute of Music
 
+
+# Part 3:
 # now lets move on to the third section, and find which variables are most
 # highly correlated with median income 10 years after graduating.
 # firstly we must get rid of all NULL and PrivacySuppressed values.
 nonullincome <- collegedata[!(collegedata$MD_EARN_WNE_P10=="NULL"),]
 fullincome <- nonullincome[!(nonullincome$MD_EARN_WNE_P10 == "PrivacySuppressed"),]
 
-# now lets transform this to numeric and we should had the complete dataset of incomes
+# now lets transform this to numeric and we should have the complete dataset of incomes
 incomedata <- transform(fullincome, MD_EARN_WNE_P10 = as.numeric(MD_EARN_WNE_P10))
 
 # now we are ready to check correlation with other variables.
@@ -127,11 +130,45 @@ incomedata <- incomedata[!(incomedata$SAT_AVG=="NULL"),]
 incomedata <- transform(incomedata, SAT_AVG = as.numeric(SAT_AVG))
 SATAVGcorr <- cor(incomedata$MD_EARN_WNE_P10, incomedata$SAT_AVG)
 
-# We get out strongest correlation coefficient so far, at 0.6545
+# We get a correlation coefficient of 0.6545
 
-# (will come back to do more correlation stuff later)
+# Lets check the correlation between avg cumulative act and income
+incomedata <- incomedata[!(incomedata$ACTMTMID=="NULL"),]
+incomedata <- transform(incomedata, ACTMTMID = as.numeric(ACTMTMID))
+ACTAVGcorr <- cor(incomedata$MD_EARN_WNE_P10, incomedata$ACTMTMID)
 
-# part 4, lets find the relationship between a school’s five year repayment rate 
+# we get a correlation coefficient of 0.704527
+
+# Lets check the correlation between completion rate and income
+incomedata <- incomedata[!(incomedata$C150_4=="NULL"),]
+incomedata <- transform(incomedata, C150_4 = as.numeric(C150_4))
+completioncorr <- cor(incomedata$MD_EARN_WNE_P10, incomedata$C150_4)
+
+# we get a correlation coefficient of 0.539
+
+# lets check the correlation between 3 year repayment rate and income
+incomedata <- incomedata[!(incomedata$COMPL_RPY_3YR_RT=="NULL"),]
+incomedata <- incomedata[!(incomedata$COMPL_RPY_3YR_RT=="PrivacySuppressed"),]
+incomedata <- transform(incomedata, COMPL_RPY_3YR_RT = as.numeric(COMPL_RPY_3YR_RT))
+yr3completioncorr <- cor(incomedata$MD_EARN_WNE_P10, incomedata$COMPL_RPY_3YR_RT)
+
+# We get a correlation coefficient of 0.6849
+
+# Finally, lets check the correlation between 5 year repayment rate and income
+incomedata <- incomedata[!(incomedata$COMPL_RPY_5YR_RT=="NULL"),]
+incomedata <- incomedata[!(incomedata$COMPL_RPY_5YR_RT=="PrivacySuppressed"),]
+incomedata <- transform(incomedata, COMPL_RPY_5YR_RT = as.numeric(COMPL_RPY_5YR_RT))
+yr5completioncorr <- cor(incomedata$MD_EARN_WNE_P10, incomedata$COMPL_RPY_5YR_RT)
+
+# We get a correlation coefficient of 0.6977
+
+# our strongest correlation out of the variables that we tested is
+# between cumulative ACT score and income. the value of the coefficient 
+# is: 0.704527
+
+# Part 4: 
+
+# lets find the relationship between a school’s five year repayment rate 
 # versus a school’s completion rate for first time full time students
 
 # first lets get the data in the form that we need.
@@ -158,4 +195,5 @@ hist(satdata$SAT_AVG, main = "distribution of average SAT scores")
 
 # Lets check out the distribution of admission rates
 hist(admitdata$ADM_RATE, main = "distribution of admission rates")
-# this distribution is skewed strongly to the left
+# this distribution is skewed strongly to the left, which contrasts
+# with the roughly normal SAT_AVG distribution.
