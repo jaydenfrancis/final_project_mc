@@ -1,0 +1,622 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F75F24CD2BDED2DD0011B4F9 /* card_detectionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75F24CC2BDED2DD0011B4F9 /* card_detectionApp.swift */; };
+		F75F24CF2BDED2DD0011B4F9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75F24CE2BDED2DD0011B4F9 /* ContentView.swift */; };
+		F75F24D12BDED2E00011B4F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F75F24D02BDED2E00011B4F9 /* Assets.xcassets */; };
+		F75F24D42BDED2E00011B4F9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F75F24D32BDED2E00011B4F9 /* Preview Assets.xcassets */; };
+		F75F24DE2BDED2E00011B4F9 /* card_detectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75F24DD2BDED2E00011B4F9 /* card_detectionTests.swift */; };
+		F75F24E82BDED2E00011B4F9 /* card_detectionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75F24E72BDED2E00011B4F9 /* card_detectionUITests.swift */; };
+		F75F24EA2BDED2E00011B4F9 /* card_detectionUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75F24E92BDED2E00011B4F9 /* card_detectionUITestsLaunchTests.swift */; };
+		F75F24F82BDED3730011B4F9 /* Roboflow in Frameworks */ = {isa = PBXBuildFile; productRef = F75F24F72BDED3730011B4F9 /* Roboflow */; };
+		F75F24FD2BDED8A60011B4F9 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F75F24FC2BDED8A50011B4F9 /* Info.plist */; };
+		F75F24FE2BDED8A60011B4F9 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F75F24FC2BDED8A50011B4F9 /* Info.plist */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F75F24DA2BDED2E00011B4F9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F75F24C12BDED2DD0011B4F9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F75F24C82BDED2DD0011B4F9;
+			remoteInfo = card_detection;
+		};
+		F75F24E42BDED2E00011B4F9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F75F24C12BDED2DD0011B4F9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F75F24C82BDED2DD0011B4F9;
+			remoteInfo = card_detection;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F75F24C92BDED2DD0011B4F9 /* card_detection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = card_detection.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F75F24CC2BDED2DD0011B4F9 /* card_detectionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = card_detectionApp.swift; sourceTree = "<group>"; };
+		F75F24CE2BDED2DD0011B4F9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		F75F24D02BDED2E00011B4F9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F75F24D32BDED2E00011B4F9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F75F24D92BDED2E00011B4F9 /* card_detectionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = card_detectionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F75F24DD2BDED2E00011B4F9 /* card_detectionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = card_detectionTests.swift; sourceTree = "<group>"; };
+		F75F24E32BDED2E00011B4F9 /* card_detectionUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = card_detectionUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F75F24E72BDED2E00011B4F9 /* card_detectionUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = card_detectionUITests.swift; sourceTree = "<group>"; };
+		F75F24E92BDED2E00011B4F9 /* card_detectionUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = card_detectionUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		F75F24FC2BDED8A50011B4F9 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F75F24C62BDED2DD0011B4F9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F75F24F82BDED3730011B4F9 /* Roboflow in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F75F24D62BDED2E00011B4F9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F75F24E02BDED2E00011B4F9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F75F24C02BDED2DD0011B4F9 = {
+			isa = PBXGroup;
+			children = (
+				F75F24CB2BDED2DD0011B4F9 /* card_detection */,
+				F75F24DC2BDED2E00011B4F9 /* card_detectionTests */,
+				F75F24E62BDED2E00011B4F9 /* card_detectionUITests */,
+				F75F24CA2BDED2DD0011B4F9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F75F24CA2BDED2DD0011B4F9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F75F24C92BDED2DD0011B4F9 /* card_detection.app */,
+				F75F24D92BDED2E00011B4F9 /* card_detectionTests.xctest */,
+				F75F24E32BDED2E00011B4F9 /* card_detectionUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F75F24CB2BDED2DD0011B4F9 /* card_detection */ = {
+			isa = PBXGroup;
+			children = (
+				F75F24CC2BDED2DD0011B4F9 /* card_detectionApp.swift */,
+				F75F24FC2BDED8A50011B4F9 /* Info.plist */,
+				F75F24CE2BDED2DD0011B4F9 /* ContentView.swift */,
+				F75F24D02BDED2E00011B4F9 /* Assets.xcassets */,
+				F75F24D22BDED2E00011B4F9 /* Preview Content */,
+			);
+			path = card_detection;
+			sourceTree = "<group>";
+		};
+		F75F24D22BDED2E00011B4F9 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				F75F24D32BDED2E00011B4F9 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F75F24DC2BDED2E00011B4F9 /* card_detectionTests */ = {
+			isa = PBXGroup;
+			children = (
+				F75F24DD2BDED2E00011B4F9 /* card_detectionTests.swift */,
+			);
+			path = card_detectionTests;
+			sourceTree = "<group>";
+		};
+		F75F24E62BDED2E00011B4F9 /* card_detectionUITests */ = {
+			isa = PBXGroup;
+			children = (
+				F75F24E72BDED2E00011B4F9 /* card_detectionUITests.swift */,
+				F75F24E92BDED2E00011B4F9 /* card_detectionUITestsLaunchTests.swift */,
+			);
+			path = card_detectionUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F75F24C82BDED2DD0011B4F9 /* card_detection */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F75F24ED2BDED2E00011B4F9 /* Build configuration list for PBXNativeTarget "card_detection" */;
+			buildPhases = (
+				F75F24C52BDED2DD0011B4F9 /* Sources */,
+				F75F24C62BDED2DD0011B4F9 /* Frameworks */,
+				F75F24C72BDED2DD0011B4F9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = card_detection;
+			packageProductDependencies = (
+				F75F24F72BDED3730011B4F9 /* Roboflow */,
+			);
+			productName = card_detection;
+			productReference = F75F24C92BDED2DD0011B4F9 /* card_detection.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F75F24D82BDED2E00011B4F9 /* card_detectionTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F75F24F02BDED2E00011B4F9 /* Build configuration list for PBXNativeTarget "card_detectionTests" */;
+			buildPhases = (
+				F75F24D52BDED2E00011B4F9 /* Sources */,
+				F75F24D62BDED2E00011B4F9 /* Frameworks */,
+				F75F24D72BDED2E00011B4F9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F75F24DB2BDED2E00011B4F9 /* PBXTargetDependency */,
+			);
+			name = card_detectionTests;
+			productName = card_detectionTests;
+			productReference = F75F24D92BDED2E00011B4F9 /* card_detectionTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		F75F24E22BDED2E00011B4F9 /* card_detectionUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F75F24F32BDED2E00011B4F9 /* Build configuration list for PBXNativeTarget "card_detectionUITests" */;
+			buildPhases = (
+				F75F24DF2BDED2E00011B4F9 /* Sources */,
+				F75F24E02BDED2E00011B4F9 /* Frameworks */,
+				F75F24E12BDED2E00011B4F9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F75F24E52BDED2E00011B4F9 /* PBXTargetDependency */,
+			);
+			name = card_detectionUITests;
+			productName = card_detectionUITests;
+			productReference = F75F24E32BDED2E00011B4F9 /* card_detectionUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F75F24C12BDED2DD0011B4F9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1520;
+				LastUpgradeCheck = 1520;
+				TargetAttributes = {
+					F75F24C82BDED2DD0011B4F9 = {
+						CreatedOnToolsVersion = 15.2;
+					};
+					F75F24D82BDED2E00011B4F9 = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = F75F24C82BDED2DD0011B4F9;
+					};
+					F75F24E22BDED2E00011B4F9 = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = F75F24C82BDED2DD0011B4F9;
+					};
+				};
+			};
+			buildConfigurationList = F75F24C42BDED2DD0011B4F9 /* Build configuration list for PBXProject "card_detection" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F75F24C02BDED2DD0011B4F9;
+			packageReferences = (
+				F75F24F62BDED3730011B4F9 /* XCRemoteSwiftPackageReference "swift-sdk" */,
+			);
+			productRefGroup = F75F24CA2BDED2DD0011B4F9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F75F24C82BDED2DD0011B4F9 /* card_detection */,
+				F75F24D82BDED2E00011B4F9 /* card_detectionTests */,
+				F75F24E22BDED2E00011B4F9 /* card_detectionUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F75F24C72BDED2DD0011B4F9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F75F24D42BDED2E00011B4F9 /* Preview Assets.xcassets in Resources */,
+				F75F24D12BDED2E00011B4F9 /* Assets.xcassets in Resources */,
+				F75F24FD2BDED8A60011B4F9 /* Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F75F24D72BDED2E00011B4F9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F75F24FE2BDED8A60011B4F9 /* Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F75F24E12BDED2E00011B4F9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F75F24C52BDED2DD0011B4F9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F75F24CF2BDED2DD0011B4F9 /* ContentView.swift in Sources */,
+				F75F24CD2BDED2DD0011B4F9 /* card_detectionApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F75F24D52BDED2E00011B4F9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F75F24DE2BDED2E00011B4F9 /* card_detectionTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F75F24DF2BDED2E00011B4F9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F75F24EA2BDED2E00011B4F9 /* card_detectionUITestsLaunchTests.swift in Sources */,
+				F75F24E82BDED2E00011B4F9 /* card_detectionUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F75F24DB2BDED2E00011B4F9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F75F24C82BDED2DD0011B4F9 /* card_detection */;
+			targetProxy = F75F24DA2BDED2E00011B4F9 /* PBXContainerItemProxy */;
+		};
+		F75F24E52BDED2E00011B4F9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F75F24C82BDED2DD0011B4F9 /* card_detection */;
+			targetProxy = F75F24E42BDED2E00011B4F9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		F75F24EB2BDED2E00011B4F9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F75F24EC2BDED2E00011B4F9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F75F24EE2BDED2E00011B4F9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"card_detection/Preview Content\"";
+				DEVELOPMENT_TEAM = JRQM44458M;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "cardapp.card-detection";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F75F24EF2BDED2E00011B4F9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"card_detection/Preview Content\"";
+				DEVELOPMENT_TEAM = JRQM44458M;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "cardapp.card-detection";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		F75F24F12BDED2E00011B4F9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "cardapp.card-detectionTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/card_detection.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/card_detection";
+			};
+			name = Debug;
+		};
+		F75F24F22BDED2E00011B4F9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "cardapp.card-detectionTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/card_detection.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/card_detection";
+			};
+			name = Release;
+		};
+		F75F24F42BDED2E00011B4F9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "cardapp.card-detectionUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = card_detection;
+			};
+			name = Debug;
+		};
+		F75F24F52BDED2E00011B4F9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "cardapp.card-detectionUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = card_detection;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F75F24C42BDED2DD0011B4F9 /* Build configuration list for PBXProject "card_detection" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F75F24EB2BDED2E00011B4F9 /* Debug */,
+				F75F24EC2BDED2E00011B4F9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F75F24ED2BDED2E00011B4F9 /* Build configuration list for PBXNativeTarget "card_detection" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F75F24EE2BDED2E00011B4F9 /* Debug */,
+				F75F24EF2BDED2E00011B4F9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F75F24F02BDED2E00011B4F9 /* Build configuration list for PBXNativeTarget "card_detectionTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F75F24F12BDED2E00011B4F9 /* Debug */,
+				F75F24F22BDED2E00011B4F9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F75F24F32BDED2E00011B4F9 /* Build configuration list for PBXNativeTarget "card_detectionUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F75F24F42BDED2E00011B4F9 /* Debug */,
+				F75F24F52BDED2E00011B4F9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F75F24F62BDED3730011B4F9 /* XCRemoteSwiftPackageReference "swift-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/roboflow/swift-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F75F24F72BDED3730011B4F9 /* Roboflow */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F75F24F62BDED3730011B4F9 /* XCRemoteSwiftPackageReference "swift-sdk" */;
+			productName = Roboflow;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = F75F24C12BDED2DD0011B4F9 /* Project object */;
+}
