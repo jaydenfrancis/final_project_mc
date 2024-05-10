@@ -1,6 +1,6 @@
 import SwiftUI
 import AVFoundation
-import Roboflow
+import UIKit
 
 struct ContentView: View {
     @StateObject private var cameraViewModel = CameraViewModel()
@@ -10,10 +10,12 @@ struct ContentView: View {
             CameraView(cameraViewModel: cameraViewModel)
             
             VStack {
-                ForEach(cameraViewModel.detectionItems) { detectionItem in
-                    if let className = detectionItem.detection.getValues()["className"] as? String,
-                       let confidence = detectionItem.detection.getValues()["confidence"] as? Float {
-                        Text("\(className): \(confidence)")
+                ForEach(cameraViewModel.detections, id: \.id) { detection in
+                    if let className = detection.className,
+                       let confidence = detection.confidence,
+                       let x = detection.x,
+                       let y = detection.y {
+                        Text("\(className): \(confidence), x: \(x), y: \(y)")
                             .foregroundColor(.white)
                             .padding()
                             .background(Color.blue)
@@ -22,6 +24,14 @@ struct ContentView: View {
                 }
                 
                 Spacer()
+                
+                Button(action: cameraViewModel.capturePhoto) {
+                    Text("Capture Photo")
+                        .foregroundColor(.white)
+                        .padding()
+                        .background(Color.blue)
+                        .cornerRadius(10)
+                }
             }
             .padding()
         }
@@ -31,18 +41,13 @@ struct ContentView: View {
     }
 }
 
-struct DetectionItem: Identifiable {
-    let id = UUID()
-    let detection: RFObjectDetectionPrediction
-}
-
-class CameraViewModel: NSObject, ObservableObject, AVCaptureVideoDataOutputSampleBufferDelegate {
-    @Published var detections: [RFObjectDetectionPrediction] = []
-    @Published var detectionItems: [DetectionItem] = []
+class CameraViewModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate {
+    @Published var detections: [Detection] = []
     
-    let captureSession = AVCaptureSession()
-    private let rf = RoboflowMobile(apiKey: "mbDpagHG5W1A2JwZKYfR")
-    private var mlModel: RFObjectDetectionModel?
+    public let captureSession = AVCaptureSession()
+    private let apiKey = "mbDpagHG5W1A2JwZKYfR"
+    private let modelId = "playing-cards-ow27d/4"
+    private let photoOutput = AVCapturePhotoOutput()
     
     func setupCamera() {
         guard let captureDevice = AVCaptureDevice.default(for: .video) else { return }
@@ -50,41 +55,79 @@ class CameraViewModel: NSObject, ObservableObject, AVCaptureVideoDataOutputSampl
         
         captureSession.addInput(input)
         
-        let output = AVCaptureVideoDataOutput()
-        output.setSampleBufferDelegate(self, queue: DispatchQueue(label: "videoQueue"))
-        captureSession.addOutput(output)
+        photoOutput.setPreparedPhotoSettingsArray([AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])], completionHandler: nil)
+        captureSession.addOutput(photoOutput)
         
         captureSession.startRunning()
-        
-        loadModel()
     }
     
-    func loadModel() {
-        rf.load(model: "playing-cards-ow27d", modelVersion: 4) { [weak self] model, error, modelName, modelType in
-            guard let self = self else { return }
-            
+    func capturePhoto() {
+        let settings = AVCapturePhotoSettings()
+        photoOutput.capturePhoto(with: settings, delegate: self)
+    }
+    
+    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+        guard let imageData = photo.fileDataRepresentation() else { return }
+        uploadImage(imageData: imageData)
+    }
+    
+    private func uploadImage(imageData: Data) {
+        let fileContent = imageData.base64EncodedString()
+        let postData = fileContent.data(using: .utf8)
+        
+        var request = URLRequest(url: URL(string: "https://detect.roboflow.com/\(modelId)?api_key=\(apiKey)&name=YOUR_IMAGE.jpg")!)
+        request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = "POST"
+        request.httpBody = postData
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
             if let error = error {
-                print("Error loading model: \(error.localizedDescription)")
-            } else {
-                self.mlModel = model
-                self.mlModel?.configure(threshold: 0.5, overlap: 0.5, maxObjects: 10)
+                print("Error: \(error)")
+                return
             }
-        }
-    }
-    
-    func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
-        
-        mlModel?.detect(pixelBuffer: pixelBuffer) { [weak self] detections, error in
-            guard let self = self else { return }
             
-            if let detections = detections {
-                DispatchQueue.main.async {
-                    self.detections = detections
-                    self.detectionItems = detections.map { DetectionItem(detection: $0) }
-                }
+            guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
+                print("Server responded with an error")
+                return
             }
-        }
+            
+            guard let data = data else {
+                print("No data received from the server")
+                return
+            }
+            
+            do {
+                let response = try JSONDecoder().decode(Response.self, from: data)
+                DispatchQueue.main.async {
+                    self.detections = response.predictions
+                }
+            } catch {
+                print("Error decoding JSON: \(error)")
+            }
+        }.resume()
+    }
+}
+
+struct Response: Codable {
+    let time: Double
+    let image: Image
+    let predictions: [Detection]
+    
+    struct Image: Codable {
+        let width, height: Int
+    }
+}
+
+struct Detection: Codable, Identifiable {
+    let id = UUID()
+    let className: String?
+    let confidence: Float?
+    let x, y, width, height: Float?
+    
+    enum CodingKeys: String, CodingKey {
+        case className = "class"
+        case confidence
+        case x, y, width, height
     }
 }
 
@@ -93,15 +136,12 @@ struct CameraView: UIViewRepresentable {
     
     func makeUIView(context: Context) -> UIView {
         let view = UIView(frame: UIScreen.main.bounds)
-        
         let previewLayer = AVCaptureVideoPreviewLayer(session: cameraViewModel.captureSession)
         previewLayer.frame = view.bounds
         previewLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
         view.layer.addSublayer(previewLayer)
-        
         return view
     }
     
     func updateUIView(_ uiView: UIView, context: Context) {}
 }
-
