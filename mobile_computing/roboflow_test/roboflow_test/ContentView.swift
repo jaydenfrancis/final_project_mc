@@ -25,12 +25,22 @@ struct ContentView: View {
                 
                 Spacer()
                 
-                Button(action: cameraViewModel.capturePhoto) {
-                    Text("Capture Photo")
-                        .foregroundColor(.white)
-                        .padding()
-                        .background(Color.blue)
-                        .cornerRadius(10)
+                HStack {
+                    Button(action: cameraViewModel.startDetection) {
+                        Text("Start Detection")
+                            .foregroundColor(.white)
+                            .padding()
+                            .background(Color.green)
+                            .cornerRadius(10)
+                    }
+                    
+                    Button(action: cameraViewModel.stopDetection) {
+                        Text("Stop Detection")
+                            .foregroundColor(.white)
+                            .padding()
+                            .background(Color.red)
+                            .cornerRadius(10)
+                    }
                 }
             }
             .padding()
@@ -48,6 +58,7 @@ class CameraViewModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate
     private let apiKey = "mbDpagHG5W1A2JwZKYfR"
     private let modelId = "playing-cards-ow27d/4"
     private let photoOutput = AVCapturePhotoOutput()
+    private var timer: Timer?
     
     func setupCamera() {
         guard let captureDevice = AVCaptureDevice.default(for: .video) else { return }
@@ -59,6 +70,17 @@ class CameraViewModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate
         captureSession.addOutput(photoOutput)
         
         captureSession.startRunning()
+    }
+    
+    func startDetection() {
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
+            self.capturePhoto()
+        }
+    }
+    
+    func stopDetection() {
+        timer?.invalidate()
+        timer = nil
     }
     
     func capturePhoto() {
